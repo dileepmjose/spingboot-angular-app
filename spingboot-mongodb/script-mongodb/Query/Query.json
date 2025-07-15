@@ -1,0 +1,176 @@
+===================================================================================================================
+Employee  Collection  Query
+====================================================================================================================
+db.employee.find()
+db.employee.findOne()
+
+db.employee.find({department: "Finance"})
+db.employee.find({age: {$gte: 40}, department: "Legal"})
+
+db.employee.find({name: {$eq: ["Linda Green"]}}) 
+db.employee.find({name: {$in: ["Linda Green"]}}) 
+
+// find employees not named Linda Green
+db.employee.find({name: {$nin: ["Linda Green"]}}) 
+
+db.employee.find({$or: [{age: 38},{department:"Sales"}]}) 
+db.employee.find({$and: [{age: 38},{department:"IT Support"}]}) 
+
+db.employees.find({$and: [{age: {$gte: 30} },{department: "IT Support" }]}) // not working
+
+
+db.employee.find({age: {$gte: 40}, department: "Legal"},{name: 1 , skills: 1})
+
+ // exclude _id 
+db.employee.find({age: {$lte: 40}, },{name: 1 , skills: 1 ,_id: 0}). 
+
+db.employee.countDocuments()
+db.employee.countDocuments({age: {$lte: 40}})
+
+
+db.employee.find().sort({age: 1})
+
+// sort by age descending and limit to 2 results
+db.employee.find().sort({age: -1}).limit(2) 
+
+// get execution stats for the query
+db.employee.find().explain("executionStats")  
+
+// find employees whose name starts with 'e'
+db.employee.find({name: { $regex: /^e/, $options: 'i' }})   
+
+// find employees with 'o' in their name
+db.employee.find({name: { $regex: /o/, $options: 'i' }})    
+
+db.employee.find().forEach(employee => {print("--- Employee Name: ---", employee.name);employee.experience.forEach(exp => {print(`Experinece ${exp.company}: ${exp.role}  ${exp.years}`);});});
+
+// aggregate to get total experience years per employee
+db.employee.aggregate([{$project: {employeeName: "$name",dept: "$department",totalExperienceYears: {$sum: "$experience.years"},_id: 0}}])   
+
+// join employee with vehicle collection to get vehicle details for each employee
+db.employee.aggregate([{$lookup: {from: "vehicle",localField: "_id",foreignField: "employeeId",as: "vehicles"}},{$project: {_id: 0,name: 1,department: 1,hobbies: 1,"vehicles.model": 1,"vehicles.registration": 1}}])  
+
+// group employees by department and count total employees in each department
+db.employee.aggregate([{$group: {_id: "$department",totalEmployees: { $sum: 1 }}},{$sort: {totalEmployees: -1}}])  
+
+// facet to get multiple aggregations in one query
+db.employee.aggregate([{$facet: {employeeByDepartment: [{ $group: { _id: "$department", employees: { $push: "$name" } } }],employeeByAge: [{ $group: { _id: "$age", employees: { $push: "$name" } } }],departmentByAge: [{ $group: { _id: "$department", averageAge: { $avg: "$age" } } }],employeeBytotalCount: [{ $count: "totalEmployees" }]}}]).pretty()  
+
+// unwind experience array to get each experience as a separate document
+db.employee.aggregate([{ $unwind: "$experience" },{$project: {name: 1,department: 1,"experience.company": 1,"experience.role": 1,"experience.years": 1}}]).pretty() 
+
+db.employee.aggregate([{ $match: { department: "Finance" } }])
+====================================================================================================================
+Persons Collection Aggeration Query
+====================================================================================================================
+
+// This query retrieves all persons with age greater than 25
+db.person.aggregate([{$match: {age: {$gt: 25}}}])
+
+// This query retrieves all persons with exactly 3 tags
+db.person.aggregate([{$match: {tags: {$size: 3}}}])
+
+/
+db.person.aggregate([{$group: {_id: "$age" } }])
+
+// This query retrieves all persons grouped by their age
+db.person.aggregate([{$group: {_id: "$gender" } }])
+
+// This query retrieves all persons grouped by their eye color
+db.person.aggregate([{$group: {_id: "$eyeColor" } }])
+
+
+db.person.aggregate([{$group: {_id: "$company.location.country" } }])
+
+db.person.aggregate([{$group: {_id: "$company" } }])
+
+
+db.person.aggregate([{$group: {_id: {age:"$age",gender: "$gender"}} }])
+
+db.person.aggregate([{$group: {_id: {eyecolour:"$eyeColor",food: "$favoriteFruit" ,gender: "$gender"}} }])
+
+db.person.aggregate([{$match :{gender: "female"}},{$group: {_id: {eyecolour:"$eyeColor",food: "$favoriteFruit"}}}])
+
+db.person.aggregate([{$group: {_id: {eyecolour: "$eyeColor",age: "$age"}}},{$match : {"_id.age": { $gt : 30 }}},{$sort: {"_id.age": 1 }}])
+
+
+db.person.aggregate([{$count: "allDocuments"}])
+
+db.person.aggregate([{$group: {_id: "$company.location.country"}}, {$count:"countryCount"}])
+
+db.person.aggregate([{$group: {_id: {eyeColor: "$eyeColor", gender: "$gender" }}}, {$count:"countryAndGenderCount"}])
+
+db.person.aggregate([{$match:{age:{$gte: 25}}},{$group: {_id: {eyeColor: "$eyeColor", age: "$age" }}}, {$count:"counEyeColorAgeCount"}])
+
+db.person.aggregate([{$sort: {name:1}}])
+
+db.person.aggregate([{$sort: {name:1, age: -1}}])
+
+db.person.aggregate([{$group:{_id: "$favoriteFruit"}}, {$sort: {_id: 1}}])
+
+db.person.aggregate([{$group:{_id: { favortieFruit: "$favoriteFruit",eyeColor: "$eyeColor"}}}, {$sort: {"_id.favortieFruit": 1,"_id.eyeColor": -1}}])
+
+db.person.aggregate([{$match:{eyeColor:{$ne: "brown"}}},{$group:{_id: { favortieFruit: "$favoriteFruit",eyeColor: "$eyeColor"}}}, {$sort: {"_id.favortieFruit": 1,"_id.eyeColor": -1}}])
+
+db.person.aggregate([{$project: {name: 1, age: 1, eyeColor: 1, favoriteFruit: 1, _id: 0}}])
+
+db.person.aggregate([{$project: {name: 1, age: 1, eyeColor: 1, favoriteFruit: 1, _id: 0}}])
+
+db.person.aggregate([{$project: {name: 1,info:{country: "$company.location.country",  email: "$company.email"}}}])
+
+db.person.aggregate([{$group: {_id: "$tags"}}])
+
+db.person.aggregate([{$unwind:  "$tags"},{$project:{name:1, age:1, eyeColor:1, tags:1, _id:0}}])
+
+db.person.aggregate([{$unwind:  "$tags"},{$group: {_id: {name: "$name",tags:"$tags"}}}])
+
+db.person.aggregate([{$group: {_id: {age: "$age",quantity:"$quantity"}}}])
+
+db.person.aggregate([{$group:  {_id: "$age",count:{$sum:1}}}])
+
+db.person.aggregate([{$group:  {_id: "$favoriteFruit",count:{$sum:1}}}])
+
+db.person.aggregate([{$unwind: "$tags"},{$group: { _id: "$tags",count:{$sum:1}}}])
+
+db.person.aggregate([{$unwind:  "$tags"},{$group: {_id: {tags: "$tags"},count: { $sum: 1 }} },{ $sort: { "_id.name": 1 }}])
+
+db.person.aggregate([{$group:  {_id: "$eyeColor",count:{$sum: 1}}}])
+
+db.person.aggregate([{$group:  {_id: "$eyeColor",avgAge:{$avg: "$age"}}}])
+
+db.person.aggregate([{$project: {name: 1, ageTyep: {$type: "$age"},tagType: {$type: "$tags"},companyType: {$type: "$company"}}}])
+
+db.person.aggregate([{$group: {_id: {age: "$age",quantity:"$quantity"}}},{$out:"outCollection"}])
+
+db.outCollection.find();
+===================================================================================================================
+Country  Collection  Query
+====================================================================================================================
+
+// update the Border IND to INDIA All the matching document
+   db.country.updateMany({ borders: { $all: ["IND"] }},{ $set: { "borders.$": "INDIA" } })
+   
+   db.country.find({  borders: { $all: ["IND"] }}) 
+   db.country.find({  borders: { $all: ["INDIA"] }}) 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+// Find All country having Border With RUS (Russia)
+   db.country.find({  borders: { $all: ["RUS"] }},{ "name.common": 1 , _id:0 })
+
+// Find All country having Border With both RUS  |AND| CHINA
+   db.country.find( { borders: { $all: ["RUS","CHN"] } },{ "name.common": 1 })
+
+// Find All country having Border With RUS  |OR|  CHINA
+   
+   db.country.find({ $or: [ { borders: { $eq: "RUS" }},{ borders: { $eq: "CHN" } } ] },{ "name.common": 1, _id:0  })
+   db.country.find({ borders: { $in: ['RUS','CHN'] } },{ "name.common": 1 , _id:0 })
+
+// Disaply French movie Rating
+
+    db.movie.find({ countries: "France" }, { title: 1 , rated: 1 , _id:0})
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+

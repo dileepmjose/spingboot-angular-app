@@ -1,0 +1,55 @@
+<h2>Search Details</h2>
+
+    <label for="eyeColor">Eye Color:</label>
+    <select id="eyeColor" [(ngModel)]="selectedEyeColor" (change)="onChangeSearch()">
+      <option value="">All</option>
+      <option *ngFor="let color of uniqueEyeColors" [value]="color">{{ color }}</option>
+    </select>
+
+    <label for="country">country:</label>
+    <select id="country" [(ngModel)]="selectedCountry" (change)="onChangeSearch()">
+      <option value="">All</option>
+      <option *ngFor="let country of uniqueCountry" [value]="country">{{ country }}</option>
+    </select>
+    
+    <label for="country">Name:</label>
+    <input type="text" placeholder="Enter country" [(ngModel)]="selectedName" (keyup.enter)="onChangeSearch()" />
+    <button (click)="onChangeSearch()">Search</button>
+
+    <div *ngIf="response?.length" class="table">
+      <div class="table-header">
+        <div class="cell wide">Name</div>
+        <div class="cell">Age</div>
+        <div class="cell">Gender</div>
+        <div class="cell">Eye Color</div>
+        <div class="cell">Fruit</div>
+        <div class="cell wide">Company Title</div>
+        <div class="cell">Email</div>
+        <div class="cell">Phone</div>
+        <div class="cell">Country</div>
+        <div class="cell wide">Address</div>
+        <div class="cell wide">Tags</div>
+      </div>
+
+      <div class="table-row" *ngFor="let res of response">
+        <div class="cell wide">{{ res.name }}</div>
+        <div class="cell">{{ res.age }}</div>
+        <div class="cell">{{ res.gender }}</div>
+        <div class="cell">{{ res.eyeColor }}</div>
+        <div class="cell">{{ res.favoriteFruit }}</div>
+        <div class="cell wide">{{ res.company?.title }}</div>
+        <div class="cell">{{ res.company?.email }}</div>
+        <div class="cell">{{ res.company?.phone }}</div>
+        <div class="cell">{{ res.company?.location?.country }}</div>
+        <div class="cell wide">{{ res.company?.location?.address }}</div>
+        <div class="cell wide">
+          <span *ngFor="let tag of res.tags; let i = index">
+            {{ tag }}<span *ngIf="i < res.tags.length - 1">, </span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="response && response.length === 0" class="no-data">
+      No person found.
+    </div>
