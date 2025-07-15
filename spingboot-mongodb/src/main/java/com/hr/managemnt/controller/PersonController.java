@@ -16,6 +16,11 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
+    @PostMapping("/create")
+    public ResponseEntity<Persons> savePerson(@RequestBody Persons person) {
+        return ResponseEntity.ok( personService.createPerson(person));
+    }
+
     @GetMapping("/get-all")
     public ResponseEntity<List<Persons>> getAll() {
         return ResponseEntity.ok(personService.getAllPersons());

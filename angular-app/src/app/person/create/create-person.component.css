@@ -1,0 +1,74 @@
+.form-grid {
+ margin-left: 4cm; 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  gap: 1rem 1.5rem; /* row-gap and column-gap */
+  max-width: 900px;
+  border: 2px solid #4a90e2;
+  padding: 2.5rem;
+  border-radius: 8px;
+  background-color: #fafafa;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-top: 1rem;
+}
+
+/* Make each label and input stack vertically inside the grid cell */
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+/* For checkbox, align label and input side-by-side */
+.form-row input[type="checkbox"] {
+  width: auto;
+  align-self: start;
+  margin-top: 0.3rem;
+}
+
+/* Headings to span all columns */
+h4{
+   color: rgb(31, 14, 218);
+  grid-column: 1 / -1;
+  margin-top: 1.5rem;
+}
+h2 {
+    margin-left: 4cm; 
+  grid-column: 1 / -1;
+  margin-top: 1.5rem;
+}
+
+/* Tag list span all columns */
+.tag-list {
+  grid-column: 1 / -1;
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.tag-list li {
+  display: inline-block;
+  background-color: #d9edf7;
+  color: #31708f;
+  border-radius: 12px;
+  padding: 0.3rem 0.7rem;
+  margin: 0 0.3rem 0.3rem 0;
+  font-size: 0.9rem;
+}
+
+/* Submit button spans all columns and aligns right */
+button[type="submit"] {
+  grid-column: 1 / -1;
+  justify-self: end;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.form-row select {
+  width: 50%;
+  align-self: start; /* aligns it to the top-left */
+}
+
+.form-row label {
+  color: rgb(82, 76, 195);
+  font-weight: 500; /* Optional: makes it slightly bolder for readability */
+}

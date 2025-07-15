@@ -1,0 +1,110 @@
+<h2>Add Person</h2>
+
+<form (ngSubmit)="submitForm()" #personForm="ngForm" class="form-grid">
+   <h4>Personal</h4>
+  <div class="form-row">
+    <label for="name">Name:</label>
+    <input id="name" type="text" name="name" [(ngModel)]="person.name" placeholder="Name" required />
+  </div>
+  
+  <div class="form-row">
+    <label for="registered">Registered:</label>
+    <input id="registered" type="datetime-local" [(ngModel)]="person.registered" name="registered" />
+  </div>
+  
+  <div class="form-row">
+  <label for="age">Age:</label>
+  <input id="age" type="number" name="age" [(ngModel)]="person.age" placeholder="Age" required />
+</div>
+
+<!-- Eye Color as select -->
+<div class="form-row">
+  <label for="eyeColor">Eye Color:</label>
+  <select id="eyeColor" name="eyeColor" [(ngModel)]="person.eyeColor">
+    <option value="" disabled selected>Select Eye Color</option>
+    <option value="blue">Blue</option>
+    <option value="green">Green</option>
+    <option value="brown">Brown</option>
+    <option value="hazel">Hazel</option>
+    <option value="gray">Gray</option>
+  </select>
+</div>
+
+<!-- Favorite Fruit as select -->
+<div class="form-row">
+  <label for="favoriteFruit">Favorite Fruit:</label>
+  <select id="favoriteFruit" name="favoriteFruit" [(ngModel)]="person.favoriteFruit">
+    <option value="" disabled selected>Select Fruit</option>
+    <option value="apple">Apple</option>
+    <option value="banana">Banana</option>
+    <option value="orange">Orange</option>
+    <option value="mango">Mango</option>
+    <option value="grape">Grape</option>
+  </select>
+</div>
+
+  <!-- Gender as select -->
+<div class="form-row">
+  <label>Gender:</label>
+  <div class="radio-group">
+    <label>
+      <input type="radio" name="gender" [(ngModel)]="person.gender" value="male" required />
+      Male
+    </label>
+    <label>
+      <input type="radio" name="gender" [(ngModel)]="person.gender" value="female" />
+      Female
+    </label>
+  </div>
+</div>
+  
+  <h4>Company</h4>
+  
+  <div class="form-row">
+    <label for="title">Title:</label>
+    <input id="title" type="text" name="title" [(ngModel)]="person.company.title" placeholder="Company Title" />
+  </div>
+  
+  <div class="form-row">
+    <label for="email">Email:</label>
+    <input id="email" type="email" name="email" [(ngModel)]="person.company.email" placeholder="Company Email" />
+  </div>
+  
+  <div class="form-row">
+    <label for="phone">Phone:</label>
+    <input id="phone" type="text" name="phone" [(ngModel)]="person.company.phone" placeholder="Company Phone" />
+  </div>
+  
+  <div class="form-row">
+    <label for="country">Country:</label>
+    <input id="country" type="text" name="country" [(ngModel)]="person.company.location.country" placeholder="Country" />
+  </div>
+  
+  <div class="form-row">
+    <label for="address">Address:</label>
+    <input id="address" type="text" name="address" [(ngModel)]="person.company.location.address" placeholder="Address" />
+  </div>
+
+
+
+
+   <div class="form-row">
+    <label for="isActive">Is Active:</label>
+    <input id="isActive" type="checkbox" [(ngModel)]="person.isActive" />
+  </div>
+  
+  <h4>Tags</h4>
+  
+<div class="form-row tag-input-row">
+  <input type="text" [(ngModel)]="newTag" name="newTag" placeholder="Tag" />
+  <button type="button" (click)="addTag()">Add Tag</button>
+</div>
+ 
+  
+  <ul *ngIf="person?.tags?.length" class="tag-list">
+    <li *ngFor="let tag of person.tags">{{ tag }}</li>
+  </ul>
+  
+  <button type="submit">Submit</button>
+</form> 
+

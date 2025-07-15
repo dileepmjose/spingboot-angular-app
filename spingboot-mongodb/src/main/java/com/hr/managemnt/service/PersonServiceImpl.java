@@ -27,6 +27,10 @@ public class PersonServiceImpl implements PersonService {
         return personRepository.findById(id).orElse(null);
     }
 
+    public Persons createPerson(Persons person){
+        return personRepository.save(person);
+    }
+
     public List<Persons> getPersonsAboveAge25() {
         return customPersonRepository.getPersonsAboveAge25();
     }

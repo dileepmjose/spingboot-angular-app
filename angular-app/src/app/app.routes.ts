@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { CreatePersonComponent } from './person/create-person.component';
-import { DisplayPersonComponent } from './person/display-person.component';
+import { CreatePersonComponent } from './person/create/create-person.component';
+import { DisplayPersonComponent } from './person/search/display-person.component';
 import { CompanyComponent } from './company/company.component';
 import { TagComponent } from './tag/tag.component';
 

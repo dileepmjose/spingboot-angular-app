@@ -44,4 +44,5 @@ public interface PersonService {
 
     List<Document> getPersonsByCountry(String country);
     List<Document> searchPersons(String eyeColor, String country, String name);
+    Persons createPerson(Persons person);
 }
