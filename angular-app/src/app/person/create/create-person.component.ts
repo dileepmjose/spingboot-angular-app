@@ -12,7 +12,27 @@ import { CommonModule } from '@angular/common';
   styleUrl : 'create-person.component.css', 
 })
 export class CreatePersonComponent {
-  person: Person | undefined;
+  person: Person  ={
+    index: 0,
+    name: '',
+    isActive: true,
+    registered: new Date().toISOString(),
+    age: 0,
+    gender: '',
+    eyeColor: '',
+    favoriteFruit: '',
+    company: {
+      title: '',
+      email: '',
+      phone: '',
+      location: {
+        country: '',
+        address: ''
+      }
+    },
+    tags: []
+  };
+  
 
   newTag = '';
 
