@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "279c717c-ce3d-465c-a22e-0c5b2d79c987",
+		"name": "Springboot-mongodb-api-Reactive",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4286642"
+	},
+	"item": [
+		{
+			"name": "GetAll-Person-Reactive",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/persons/get-all-order-summary",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"persons",
+						"get-all-order-summary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Person_OrderTotal-Reactive",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/persons/get-all-order-summary",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"persons",
+						"get-all-order-summary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePersons-Reactive",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Aurelia Gonzales\",\n    \"isActive\": false,\n    \"registered\": \"2015-02-11T04:22:39+0000\",\n    \"age\": 20,\n    \"gender\": \"female\",\n    \"eyeColor\": \"green\",\n    \"favoriteFruit\": \"banana\",\n    \"company\": {\n      \"title\": \"YURTURE\",\n      \"email\": \"aureliagonzales@yurture.com\",\n      \"phone\": \"+1 (940) 501-3963\",\n      \"location\": {\n        \"country\": \"USA\",\n        \"address\": \"694 Hewes Street\"\n      }\n    },\n    \"tags\": [\"enim\", \"id\", \"velit\", \"ad\", \"consequat\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/persons/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"persons",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

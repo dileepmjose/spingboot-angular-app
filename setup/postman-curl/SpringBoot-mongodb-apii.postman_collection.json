@@ -1,0 +1,559 @@
+{
+	"info": {
+		"_postman_id": "90ba8968-d4fc-4e23-9d4a-bc41bfdc4927",
+		"name": "SpringBoot-mongodb-apii",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4286642"
+	},
+	"item": [
+		{
+			"name": "Person",
+			"item": [
+				{
+					"name": "eyecolor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons?eyecolor=brown",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons"
+							],
+							"query": [
+								{
+									"key": "eyecolor",
+									"value": "brown"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/get-all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"get-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Active Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/active-users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"active-users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project Company Location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/project-company-location",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"project-company-location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unwind Tags Then Group",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/unwind-tags-then-group",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"unwind-tags-then-group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eye Color Blue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/eyecolor-blue",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"eyecolor-blue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Group By Eye Color",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/group-by-eyecolor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"group-by-eyecolor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "group-by-company-country",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/group-by-company-country",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"group-by-company-country"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tags Containing 'consequat'",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/tags-containing-consequat",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"tags-containing-consequat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "group-by-eyeColor-fruit-gender",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/group-by-eyeColor-fruit-gender",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"group-by-eyeColor-fruit-gender"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "count-eyeColor-age--count-combinations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/count-eyeColor-age-combinations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"count-eyeColor-age-combinations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Three Tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/three-tags",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"three-tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Age Greater Than 25",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/age-greater-than-25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"age-greater-than-25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unwind Tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/unwind-tags",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"unwind-tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "group-eyeColor-age-above-30",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/group-eyeColor-age-above-30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"group-eyeColor-age-above-30"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "group-sort-non-brown-eyes-fruit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/group-sort-non-brown-eyes-fruit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"group-sort-non-brown-eyes-fruit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "project-country-email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/project-country-email",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"project-country-email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unwind-tags-with-fields",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/unwind-tags-with-fields",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"unwind-tags-with-fields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "group-by-name-tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/group-by-name-tags",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"group-by-name-tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "group-by-favorite-fruit-count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/group-by-favorite-fruit-count",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"group-by-favorite-fruit-count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "group-by-tags-sorted",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/group-by-tags-sorted",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"group-by-tags-sorted"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "avg-age-by-eyeColor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/avg-age-by-eyeColor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"avg-age-by-eyeColor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "distinct-eyecolors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/eyecolors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"eyecolors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "distinct-counry",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/countries",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"countries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SearchPerson",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persons/search?eyeColor=blue&country=USA&name=Ma",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persons",
+								"search"
+							],
+							"query": [
+								{
+									"key": "eyeColor",
+									"value": "blue"
+								},
+								{
+									"key": "country",
+									"value": "USA"
+								},
+								{
+									"key": "name",
+									"value": "Ma"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
