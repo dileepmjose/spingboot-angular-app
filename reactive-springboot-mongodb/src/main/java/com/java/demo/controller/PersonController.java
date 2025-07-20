@@ -11,8 +11,10 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.util.function.Tuple2;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -39,6 +41,11 @@ public class PersonController {
 
     @GetMapping("/get-all-order-summary")
     public ResponseEntity<Mono<Map<String,Double>>> getAllOrderSummary() {
+
+        Persons p = new Persons();
+        p.setId("123");
+         p.getId();
+
         Mono<Map<String,Double>> map = getOrderSummary();
         Flux<Persons> personFlux = getALlPerson();
         return ResponseEntity.ok(map);
@@ -55,8 +62,9 @@ public class PersonController {
 
     public Mono<Map<String,Double>> getOrderSummary(){
         Map<String,Double> map = new HashMap<>();
-        return getALlPerson().flatMap(person-> Mono.zip(Mono.just(person),getOrderbyPersonId(person.getId()))).
-                collectMap(tuple2 -> tuple2.getT1().getName(),tuple2->tuple2.getT2());
+        return getALlPerson().
+                flatMap(person -> Mono.zip(Mono.just(person),getOrderbyPersonId(person.getId()))).
+                collectMap(tuple -> tuple.getT1().getName(),tuple->tuple.getT2());
 
     }
 
@@ -66,7 +74,7 @@ public class PersonController {
         Query query = Query.query(criteria);
         return reactiveMongoTemplate.find(query, Order.class) // returns Flux<Order>
                 .flatMap(order -> Flux.fromArray(order.getItems())) // flatten all items from all orders
-                .map(Item::getPrice)                                // extract price
+                .map(Order.Item::getPrice)                                // extract price
                 .reduce(0d, Double::sum);
     }
 

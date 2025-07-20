@@ -8,20 +8,25 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-
-@Document("order")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Document("order")
 public class Order {
+
     @Id
     private String id;
-
 
     private String personId;
     private Date orderDate;
     private Item[] items;
 
-
-
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class Item {
+        private String itemName;
+        private String quantity;
+        private Double price;
+    }
 }
