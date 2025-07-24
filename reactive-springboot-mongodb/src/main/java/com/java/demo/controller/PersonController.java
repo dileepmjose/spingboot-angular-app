@@ -41,11 +41,6 @@ public class PersonController {
 
     @GetMapping("/get-all-order-summary")
     public ResponseEntity<Mono<Map<String,Double>>> getAllOrderSummary() {
-
-        Persons p = new Persons();
-        p.setId("123");
-         p.getId();
-
         Mono<Map<String,Double>> map = getOrderSummary();
         Flux<Persons> personFlux = getALlPerson();
         return ResponseEntity.ok(map);

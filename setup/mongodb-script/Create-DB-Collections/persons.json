@@ -1,3 +1,7 @@
+
+// modify the below collection to handle  mutiple companies
+// if the person has multiple companies, the company field should be an array of objects
+
 [
   {
     "index": 0,
@@ -34,7 +38,8 @@
     "gender": "female",
     "eyeColor": "blue",
     "favoriteFruit": "apple",
-    "company": {
+    "company": [
+      {
       "title": "DIGITALUS",
       "email": "kittysnow@digitalus.com",
       "phone": "+1 (949) 568-3470",
@@ -42,7 +47,25 @@
         "country": "Italy",
         "address": "154 Arlington Avenue"
       }
-    },
+    }, {
+        "title": "YURTURE",
+        "email": "aureliagonzales@yurture.com",
+        "phone": "+1 (940) 501-3963",
+        "location": {
+          "country": "USA",
+          "address": "694 Hewes Street"
+        }
+      },
+      {
+        "title": "GREENBASE",
+        "email": "aurelia@greenbase.com",
+        "phone": "+1 (800) 777-4321",
+        "location": {
+          "country": "USA",
+          "address": "789 Forest Ave"
+        }
+      }
+    ],
     "tags": [
       "ut",
       "voluptate",

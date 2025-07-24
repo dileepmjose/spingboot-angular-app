@@ -24,6 +24,6 @@ public class Persons {
     private String gender;
     private String eyeColor;
     private String favoriteFruit;
-    private Company company;
+    private List<Company> company;
     private List<String> tags;
 }
